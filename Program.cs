@@ -4,6 +4,8 @@ namespace Projects
 {
     class Program
     {
+        private const string V = "";
+
         static void Main(string[] args)
         {
             // run get app info
@@ -11,8 +13,6 @@ namespace Projects
 
             while (true)
             {
-
-
                 // Ask users name
                 Console.WriteLine("What is your name?");
                 // Get user input
@@ -38,10 +38,8 @@ namespace Projects
                     // make sure input is a number
                     if (!int.TryParse(userInput, out guess))
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("{0}, that's not even a number...", username);
-                        Console.ResetColor();
 
+                        PrintColorMessage(ConsoleColor.Red, "{ 0}, that's not even a number...", username);
                         // keep it going
                         continue;
                     }
@@ -78,18 +76,33 @@ namespace Projects
                 }
             }
         }
+        // print color message
+        static void PrintColorMessage(ConsoleColor color, params string[] messages)
+        {
+            Console.ForegroundColor = color;
+            foreach (string message in messages)
+            {
+                Console.WriteLine(message);
+            }
+            Console.ResetColor();
+        }
+
         // get the app info
         static void GetAppInfo()
         {
-            string appName = "Number Guesser";
-            string appVersion = "1.0.0";
-            string appAuther = "Carlos Lantigua";
-            // Change text color
-            Console.ForegroundColor = ConsoleColor.Green;
-            // Write out app info
-            Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuther);
-            // reset color back
-            Console.ResetColor();
+            string[] data = { "Number Guess ", "1.0.0 ", "Carlos Lantigua" };
+            string newMessage = V;
+            foreach (string v in data)
+            {
+                newMessage += v;
+            }
+            PrintColorMessage(ConsoleColor.Green, "{0}: Version {0} by {0}", newMessage);
+            // // Change text color
+            // Console.ForegroundColor = ConsoleColor.Green;
+            // // Write out app info
+            // Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuther);
+            // // reset color back
+            // Console.ResetColor();
         }
     }
 }
