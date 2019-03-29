@@ -20,8 +20,9 @@ namespace Projects
             // Ask users name
             Console.WriteLine("What is your name?");
             // Get user input
-            string input = Console.ReadLine();
-
+            string username = Console.ReadLine();
+            // user users name
+            Console.WriteLine("Hello {0}, let's play a game...", username);
         }
     }
 }
