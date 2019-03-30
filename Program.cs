@@ -49,15 +49,14 @@ namespace Projects
                     if (guess != correctNumber)
                     {
                         // change the color, output the message then change it back
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Wrong number {0}, please try again...", username);
-                        Console.ResetColor();
+                        PrintColorMessage(ConsoleColor.Red, "Wrong number {0}, please try again...", username);
                     }
 
                 }
                 // Output success message
+                PrintColorMessage(ConsoleColor.Yellow, "Great job {0}!! That was the correct number!!...", username);
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Great job {0}!! The correct number was {1}!!...", username, correctNumber);
+                Console.WriteLine();
                 Console.ResetColor();
 
                 // Ask to play again
@@ -77,32 +76,18 @@ namespace Projects
             }
         }
         // print color message
-        static void PrintColorMessage(ConsoleColor color, params string[] messages)
+        static void PrintColorMessage(ConsoleColor color, string text, params string[] messages)
         {
             Console.ForegroundColor = color;
-            foreach (string message in messages)
-            {
-                Console.WriteLine(message);
-            }
+            Console.WriteLine(text, messages);
             Console.ResetColor();
         }
 
         // get the app info
         static void GetAppInfo()
         {
-            string[] data = { "Number Guess ", "1.0.0 ", "Carlos Lantigua" };
-            string newMessage = V;
-            foreach (string v in data)
-            {
-                newMessage += v;
-            }
-            PrintColorMessage(ConsoleColor.Green, "{0}: Version {0} by {0}", newMessage);
-            // // Change text color
-            // Console.ForegroundColor = ConsoleColor.Green;
-            // // Write out app info
-            // Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuther);
-            // // reset color back
-            // Console.ResetColor();
+            string[] data = { "Number Guesser ", "1.0.0 ", "Carlos Lantigua" };
+            PrintColorMessage(ConsoleColor.Green, "{0}: Version {1} by {2}", data[0], data[1], data[2]);
         }
     }
 }
