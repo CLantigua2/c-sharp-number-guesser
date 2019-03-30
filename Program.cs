@@ -38,7 +38,6 @@ namespace Projects
                     // make sure input is a number
                     if (!int.TryParse(userInput, out guess))
                     {
-
                         PrintColorMessage(ConsoleColor.Red, "{ 0}, that's not even a number...", username);
                         // keep it going
                         continue;
@@ -51,13 +50,9 @@ namespace Projects
                         // change the color, output the message then change it back
                         PrintColorMessage(ConsoleColor.Red, "Wrong number {0}, please try again...", username);
                     }
-
                 }
                 // Output success message
                 PrintColorMessage(ConsoleColor.Yellow, "Great job {0}!! That was the correct number!!...", username);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine();
-                Console.ResetColor();
 
                 // Ask to play again
                 Console.WriteLine("Play Again? [Y or N]");
